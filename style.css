@@ -1,0 +1,490 @@
+/* Add this at the top of your CSS */
+:root {
+    --sidebar-width: 250px;
+    --sidebar-collapsed-width: 70px;
+    --sidebar-bg: steelblue;
+    --sidebar-active-bg: #1e6ba3;
+    --sidebar-hover-bg: #3a7aaf;
+    --transition-speed: 0.3s;
+  }
+  
+  /* Base Styles */
+  body {
+    font-family: "Jost", serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  /* Sidebar Container - Single Definition */
+  .sidebar_container {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: var(--sidebar-bg);
+    transition: all var(--transition-speed) ease;
+    z-index: 1000;
+    overflow-y: auto;
+    line-height: 50px;
+  }
+  
+  /* Side Menu Styles */
+  .side_menu {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+  }
+  
+  .side_menu li {
+    padding: 0;
+  }
+  
+  .side_menu li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background-color var(--transition-speed);
+  }
+  
+  .side_menu li a:hover {
+    background-color: var(--sidebar-hover-bg);
+  }
+  
+  .side_menu li a.active {
+    background-color: var(--sidebar-active-bg);
+  }
+  
+  .side_menu li a i {
+    margin-right: 15px;
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+    color: white;
+  }
+  
+  /* Toggle Button */
+  .sidebar-toggle {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    background: var(--sidebar-bg);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1100;
+    transition: left var(--transition-speed) ease;
+  }
+  
+  /* Collapsed State */
+  .sidebar_container.collapsed {
+    width: var(--sidebar-collapsed-width);
+  }
+  
+  .sidebar_container.collapsed .side_menu span {
+    display: none;
+  }
+  
+  .sidebar_container.collapsed .side_menu li a {
+    justify-content: center;
+    padding: 12px 0;
+  }
+  
+  .sidebar_container.collapsed .side_menu li a i {
+    margin-right: 0;
+  }
+  
+  /* Main Content */
+  .main-content {
+    margin-left: var(--sidebar-width);
+    padding: 20px;
+    transition: margin-left var(--transition-speed) ease;
+  }
+  
+  body.sidebar-collapsed .main-content {
+    margin-left: var(--sidebar-collapsed-width);
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 992px) {
+    .sidebar_container {
+      transform: translateX(-100%);
+    }
+    
+    .sidebar_container.open {
+      transform: translateX(0);
+    }
+    
+    .sidebar-toggle {
+      display: block;
+    }
+    
+    .main-content {
+      margin-left: 0 !important;
+    }
+    
+    body.sidebar-collapsed .sidebar_container.collapsed {
+      transform: translateX(-100%);
+    }
+    
+    body.sidebar-collapsed .sidebar_container.collapsed.open {
+      transform: translateX(0);
+    }
+  }
+  
+  @media (min-width: 993px) {
+    .sidebar-toggle {
+      left: calc(var(--sidebar-width) + 20px);
+      display: block;
+    }
+    
+    body.sidebar-collapsed .sidebar-toggle {
+      left: calc(var(--sidebar-collapsed-width) + 20px);
+    }
+  }
+  
+  /* Your Existing Content Styles (keep these) */
+  .form_container, 
+  .content, 
+  .class_managment {
+    transition: margin-left var(--transition-speed) ease;
+  }
+  
+  body.sidebar-collapsed .form_container,
+  body.sidebar-collapsed .content,
+  body.sidebar-collapsed .class_managment {
+    margin-left: var(--sidebar-collapsed-width);
+  }
+  
+  /* Keep all your other existing styles below this point */
+
+  .attendance-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 15px;
+}
+.calendar-day {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+}
+.day-header {
+    font-weight: bold;
+    background-color: #f8f9fa;
+}
+.present {
+    background-color: #d4edda;
+}
+.absent {
+    background-color: #f8d7da;
+}
+.no-data {
+    background-color: #fff3cd;
+}
+
+
+/* Add to your existing CSS */
+#monthlyReportSection {
+  transition: all 0.3s ease;
+}
+
+.monthly-stats-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#monthlyReportContent table {
+  font-size: 0.9rem;
+}
+
+#monthlyReportContent table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+
+
+        :root {
+            --primary-color: #44c1e7;
+            --secondary-color: #44c1e7;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4bb543;
+            --danger-color: #ff3333;
+            --warning-color: #ffcc00;
+            --info-color: #17a2b8;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fb;
+            color: var(--dark-color);
+        }
+
+        .sidebar_container {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            min-height: 100vh;
+            width: 250px;
+            transition: all 0.3s;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar_container.collapsed {
+            width: 80px;
+        }
+
+        .sidebar_container.collapsed .side_menu span {
+            display: none;
+        }
+
+        .side_menu {
+            padding: 20px 0;
+        }
+
+        .side_menu li {
+            margin-bottom: 5px;
+        }
+
+        .side_menu a {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            border-radius: 0 30px 30px 0;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .side_menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .side_menu a.active {
+            background: white;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .side_menu i {
+            margin-right: 10px;
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .sidebar-toggle {
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            z-index: 1000;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .sidebar-toggle:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .content {
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .section_student_div h1 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section_student_div h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .filter-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .filter-card label {
+            font-weight: 500;
+            color: var(--dark-color);
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            padding: 10px 15px;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            border-radius: 8px;
+            padding: 10px 25px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border-radius: 8px;
+            padding: 10px 25px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .student-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: none;
+            transition: all 0.3s;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .student-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .student-card .card-body {
+            padding: 20px;
+        }
+
+        .student-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #f0f0f0;
+        }
+
+        .student-card label {
+            font-weight: 500;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .button_section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+            border-color: var(--success-color);
+            border-radius: 8px;
+            padding: 8px 20px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-success:hover {
+            background-color: #3fa137;
+            border-color: #3fa137;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            border-color: var(--danger-color);
+            border-radius: 8px;
+            padding: 8px 20px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-danger:hover {
+            background-color: #e60000;
+            border-color: #e60000;
+            transform: translateY(-2px);
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 50px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .no-data i {
+            font-size: 50px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .no-data p {
+            font-size: 18px;
+            color: #777;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar_container {
+                width: 0;
+                overflow: hidden;
+                position: fixed;
+                z-index: 999;
+            }
+
+            .sidebar_container.open {
+                width: 250px;
+            }
+
+            .content {
+                margin-left: 0;
+            }
+        }
+    
+
+
